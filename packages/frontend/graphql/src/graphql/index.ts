@@ -324,6 +324,19 @@ query getMembersByWorkspaceId($workspaceId: String!, $skip: Int!, $take: Int!) {
 }`,
 };
 
+export const oauthProvidersQuery = {
+  id: 'oauthProvidersQuery' as const,
+  operationName: 'oauthProviders',
+  definitionName: 'serverConfig',
+  containsFile: false,
+  query: `
+query oauthProviders {
+  serverConfig {
+    oauthProviders
+  }
+}`,
+};
+
 export const getPublicWorkspaceQuery = {
   id: 'getPublicWorkspaceQuery' as const,
   operationName: 'getPublicWorkspace',

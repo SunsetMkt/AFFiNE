@@ -13,7 +13,7 @@ import {
 import type { SnapshotHistory } from '@prisma/client';
 
 import { CloudThrottlerGuard } from '../../../fundamentals';
-import { Auth, CurrentUser } from '../../auth';
+import { CurrentUser } from '../../auth';
 import { DocHistoryManager } from '../../doc';
 import { UserType } from '../../users';
 import { DocID } from '../../utils/doc';
@@ -68,7 +68,6 @@ export class DocHistoryResolver {
       );
   }
 
-  @Auth()
   @Mutation(() => Date)
   async recoverDoc(
     @CurrentUser() user: UserType,

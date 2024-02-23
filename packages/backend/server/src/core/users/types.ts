@@ -55,8 +55,12 @@ export class UserType implements Partial<User> {
   @Field(() => String, { description: 'User avatar url', nullable: true })
   avatarUrl: string | null = null;
 
-  @Field(() => Date, { description: 'User email verified', nullable: true })
-  emailVerified: Date | null = null;
+  @Field(() => Date, {
+    name: 'emailVerified',
+    description: 'User email verified',
+    nullable: true,
+  })
+  emailVerifiedAt: Date | null = null;
 
   @Field({ description: 'User created date', nullable: true })
   createdAt!: Date;

@@ -33,9 +33,7 @@ export async function getLatestMailMessage() {
 export async function getLoginCookie(
   context: BrowserContext
 ): Promise<Cookie | undefined> {
-  return (await context.cookies()).find(
-    c => c.name === 'next-auth.session-token'
-  );
+  return (await context.cookies()).find(c => c.name === 'sid');
 }
 
 const cloudUserSchema = z.object({

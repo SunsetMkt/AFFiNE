@@ -6,22 +6,19 @@ import {
 import { Args, Context, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 
 import { CloudThrottlerGuard, Throttle } from '../../fundamentals';
-import { Auth, CurrentUser } from '../auth/guard';
-import { AuthService } from '../auth/service';
+import { CurrentUser } from '../auth/guard';
 import { FeatureManagementService } from '../features';
+import { UsersService } from './service';
 import { UserType } from './types';
-import { UsersService } from './users';
 
 /**
  * User resolver
  * All op rate limit: 10 req/m
  */
 @UseGuards(CloudThrottlerGuard)
-@Auth()
 @Resolver(() => UserType)
 export class UserManagementResolver {
   constructor(
-    private readonly auth: AuthService,
     private readonly users: UsersService,
     private readonly feature: FeatureManagementService
   ) {}
@@ -44,7 +41,7 @@ export class UserManagementResolver {
     if (user) {
       return this.feature.addEarlyAccess(user.id);
     } else {
-      const user = await this.auth.createAnonymousUser(email);
+      const user = await this.users.createAnonymousUser(email);
       return this.feature.addEarlyAccess(user.id);
     }
   }

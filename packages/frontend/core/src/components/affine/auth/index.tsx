@@ -59,8 +59,10 @@ export const AuthModal: FC<AuthModalBaseProps & AuthProps> = ({
   emailType,
 }) => {
   const onSignedIn = useCallback(() => {
+    setAuthState('signIn');
+    setAuthEmail('');
     setOpen(false);
-  }, [setOpen]);
+  }, [setAuthState, setAuthEmail, setOpen]);
 
   return (
     <AuthModalBase open={open} setOpen={setOpen}>

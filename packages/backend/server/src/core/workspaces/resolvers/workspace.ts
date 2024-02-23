@@ -27,8 +27,7 @@ import {
   MailService,
   Throttle,
 } from '../../../fundamentals';
-import { Auth, CurrentUser, Public } from '../../auth';
-import { AuthService } from '../../auth/service';
+import { CurrentUser, Public } from '../../auth';
 import { QuotaManagementService, QuotaQueryType } from '../../quota';
 import { WorkspaceBlobStorage } from '../../storage';
 import { UsersService, UserType } from '../../users';
@@ -48,13 +47,11 @@ import { defaultWorkspaceAvatar } from '../utils';
  * Other rate limit: 120 req/m
  */
 @UseGuards(CloudThrottlerGuard)
-@Auth()
 @Resolver(() => WorkspaceType)
 export class WorkspaceResolver {
   private readonly logger = new Logger(WorkspaceResolver.name);
 
   constructor(
-    private readonly auth: AuthService,
     private readonly mailer: MailService,
     private readonly prisma: PrismaClient,
     private readonly permissions: PermissionService,
@@ -358,7 +355,7 @@ export class WorkspaceResolver {
       // only invite if the user is not already in the workspace
       if (originRecord) return originRecord.id;
     } else {
-      target = await this.auth.createAnonymousUser(email);
+      target = await this.users.createAnonymousUser(email);
     }
 
     const inviteId = await this.permissions.grant(

@@ -22,7 +22,7 @@ import {
   MakeCache,
   PreventCache,
 } from '../../../fundamentals';
-import { Auth, CurrentUser } from '../../auth';
+import { CurrentUser } from '../../auth';
 import { FeatureManagementService, FeatureType } from '../../features';
 import { QuotaManagementService } from '../../quota';
 import { WorkspaceBlobStorage } from '../../storage';
@@ -31,7 +31,6 @@ import { PermissionService } from '../permission';
 import { Permission, WorkspaceBlobSizes, WorkspaceType } from '../types';
 
 @UseGuards(CloudThrottlerGuard)
-@Auth()
 @Resolver(() => WorkspaceType)
 export class WorkspaceBlobResolver {
   logger = new Logger(WorkspaceBlobResolver.name);

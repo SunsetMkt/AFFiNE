@@ -21,7 +21,7 @@ import type { User, UserInvoice, UserSubscription } from '@prisma/client';
 import { PrismaClient } from '@prisma/client';
 import { groupBy } from 'lodash-es';
 
-import { Auth, CurrentUser, Public } from '../../core/auth';
+import { CurrentUser, Public } from '../../core/auth';
 import { UserType } from '../../core/users';
 import { Config } from '../../fundamentals';
 import { decodeLookupKey, SubscriptionService } from './service';
@@ -155,7 +155,6 @@ class CreateCheckoutSessionInput {
   idempotencyKey!: string;
 }
 
-@Auth()
 @Resolver(() => UserSubscriptionType)
 export class SubscriptionResolver {
   constructor(

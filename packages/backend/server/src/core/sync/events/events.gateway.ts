@@ -12,7 +12,7 @@ import { Server, Socket } from 'socket.io';
 import { encodeStateAsUpdate, encodeStateVector } from 'yjs';
 
 import { CallTimer, metrics } from '../../../fundamentals';
-import { Auth, CurrentUser } from '../../auth';
+import { CurrentUser } from '../../auth';
 import { DocManager } from '../../doc';
 import { UserType } from '../../users';
 import { DocID } from '../../utils/doc';
@@ -136,7 +136,6 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
     return null;
   }
 
-  @Auth()
   @SubscribeMessage('client-handshake-sync')
   async handleClientHandshakeSync(
     @CurrentUser() user: UserType,
@@ -169,7 +168,6 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
     }
   }
 
-  @Auth()
   @SubscribeMessage('client-handshake-awareness')
   async handleClientHandshakeAwareness(
     @CurrentUser() user: UserType,
@@ -205,7 +203,6 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
   /**
    * @deprecated use `client-handshake-sync` and `client-handshake-awareness` instead
    */
-  @Auth()
   @SubscribeMessage('client-handshake')
   async handleClientHandShake(
     @MessageBody() workspaceId: string,
@@ -286,7 +283,6 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
     };
   }
 
-  @Auth()
   @SubscribeMessage('doc-load-v2')
   async loadDocV2(
     @ConnectedSocket() client: Socket,

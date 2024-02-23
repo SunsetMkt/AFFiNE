@@ -1,6 +1,6 @@
 declare namespace Express {
   interface Request {
-    user?: import('@prisma/client').User | null;
+    user?: Omit<import('@prisma/client').User, 'password'> | null;
   }
 }
 

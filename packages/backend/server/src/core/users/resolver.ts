@@ -17,10 +17,11 @@ import {
   PaymentRequiredException,
   Throttle,
 } from '../../fundamentals';
-import { Auth, CurrentUser, Public, Publicable } from '../auth/guard';
+import { CurrentUser, Public } from '../auth/guard';
 import { FeatureManagementService } from '../features';
 import { QuotaService } from '../quota';
 import { AvatarStorage } from '../storage';
+import { UsersService } from './service';
 import {
   DeleteAccount,
   RemoveAvatar,
@@ -28,14 +29,12 @@ import {
   UserQuotaType,
   UserType,
 } from './types';
-import { UsersService } from './users';
 
 /**
  * User resolver
  * All op rate limit: 10 req/m
  */
 @UseGuards(CloudThrottlerGuard)
-@Auth()
 @Resolver(() => UserType)
 export class UserResolver {
   constructor(
@@ -53,7 +52,7 @@ export class UserResolver {
       ttl: 60,
     },
   })
-  @Publicable()
+  @Public()
   @Query(() => UserType, {
     name: 'currentUser',
     description: 'Get current user',
@@ -66,13 +65,13 @@ export class UserResolver {
 
     const storedUser = await this.users.findUserById(user.id);
     if (!storedUser) {
-      throw new BadRequestException(`User ${user.id} not found in db`);
+      throw new BadRequestException(`User ${user.id} not found`);
     }
     return {
       id: storedUser.id,
       name: storedUser.name,
       email: storedUser.email,
-      emailVerified: storedUser.emailVerified,
+      emailVerifiedAt: storedUser.emailVerifiedAt,
       avatarUrl: storedUser.avatarUrl,
       createdAt: storedUser.createdAt,
       hasPassword: !!storedUser.password,

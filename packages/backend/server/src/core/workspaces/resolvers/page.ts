@@ -15,7 +15,7 @@ import {
 } from '@prisma/client';
 
 import { CloudThrottlerGuard } from '../../../fundamentals';
-import { Auth, CurrentUser } from '../../auth';
+import { CurrentUser } from '../../auth';
 import { UserType } from '../../users';
 import { DocID } from '../../utils/doc';
 import { PermissionService, PublicPageMode } from '../permission';
@@ -42,7 +42,6 @@ class WorkspacePage implements Partial<PrismaWorkspacePage> {
 }
 
 @UseGuards(CloudThrottlerGuard)
-@Auth()
 @Resolver(() => WorkspaceType)
 export class PagePermissionResolver {
   constructor(

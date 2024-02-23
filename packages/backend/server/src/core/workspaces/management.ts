@@ -10,14 +10,13 @@ import {
 } from '@nestjs/graphql';
 
 import { CloudThrottlerGuard, Throttle } from '../../fundamentals';
-import { Auth, CurrentUser } from '../auth';
+import { CurrentUser } from '../auth';
 import { FeatureManagementService, FeatureType } from '../features';
 import { UserType } from '../users';
 import { PermissionService } from './permission';
 import { WorkspaceType } from './types';
 
 @UseGuards(CloudThrottlerGuard)
-@Auth()
 @Resolver(() => WorkspaceType)
 export class WorkspaceManagementResolver {
   constructor(

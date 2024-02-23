@@ -57,6 +57,11 @@ export enum InvoiceStatus {
   Void = 'Void',
 }
 
+export enum OAuthProviderType {
+  GitHub = 'GitHub',
+  Google = 'Google',
+}
+
 /** User permission in workspace */
 export enum Permission {
   Admin = 'Admin',
@@ -77,6 +82,7 @@ export enum ServerDeploymentType {
 }
 
 export enum ServerFeature {
+  OAuth = 'OAuth',
   Payment = 'Payment',
 }
 
@@ -367,6 +373,16 @@ export type GetMembersByWorkspaceIdQuery = {
       accepted: boolean;
       emailVerified: string | null;
     }>;
+  };
+};
+
+export type OauthProvidersQueryVariables = Exact<{ [key: string]: never }>;
+
+export type OauthProvidersQuery = {
+  __typename?: 'Query';
+  serverConfig: {
+    __typename?: 'ServerConfigType';
+    oauthProviders: Array<OAuthProviderType>;
   };
 };
 
@@ -937,6 +953,11 @@ export type Queries =
       name: 'getMembersByWorkspaceIdQuery';
       variables: GetMembersByWorkspaceIdQueryVariables;
       response: GetMembersByWorkspaceIdQuery;
+    }
+  | {
+      name: 'oauthProvidersQuery';
+      variables: OauthProvidersQueryVariables;
+      response: OauthProvidersQuery;
     }
   | {
       name: 'getPublicWorkspaceQuery';

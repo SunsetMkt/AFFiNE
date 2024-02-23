@@ -175,7 +175,7 @@ export class FeatureService {
               name: true,
               avatarUrl: true,
               email: true,
-              emailVerified: true,
+              emailVerifiedAt: true,
               createdAt: true,
             },
           },

@@ -1,10 +1,6 @@
 import '@affine/component/theme/global.css';
 import '@affine/component/theme/theme.css';
 import { createI18n } from '@affine/i18n';
-import MockSessionContext, {
-  mockAuthStates,
-  // @ts-ignore
-} from '@tomfreudenberg/next-auth-mock';
 import { ThemeProvider, useTheme } from 'next-themes';
 import { useDarkMode } from 'storybook-dark-mode';
 import { AffineContext } from '@affine/component/context';

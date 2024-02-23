@@ -42,7 +42,7 @@ export interface UpdateRow {
   docId?: string
 }
 
-export enum ValidationResult {
+export const enum ValidationResult {
   MissingTables = 0,
   MissingDocIdColumn = 1,
   MissingVersionColumn = 2,

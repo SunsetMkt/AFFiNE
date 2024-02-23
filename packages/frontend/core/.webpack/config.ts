@@ -384,6 +384,8 @@ export const createConfiguration: (
         { context: '/api', target: 'http://localhost:3010' },
         { context: '/socket.io', target: 'http://localhost:3010', ws: true },
         { context: '/graphql', target: 'http://localhost:3010' },
+        { context: '/auth', target: 'http://localhost:3010' },
+        { context: '/oauth', target: 'http://localhost:3010' },
       ],
     } as DevServerConfiguration,
   } satisfies webpack.Configuration;
