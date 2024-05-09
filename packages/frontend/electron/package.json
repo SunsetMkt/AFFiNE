@@ -68,7 +68,7 @@
     "tinykeys": "patch:tinykeys@npm%3A2.1.0#~/.yarn/patches/tinykeys-npm-2.1.0-819feeaed0.patch",
     "tree-kill": "^1.2.2",
     "ts-node": "^10.9.2",
-    "undici": "^6.6.2",
+    "undici": "^6.11.1",
     "uuid": "^9.0.1",
     "vitest": "1.4.0",
     "which": "^4.0.0",

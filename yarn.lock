@@ -493,7 +493,7 @@ __metadata:
     tinykeys: "patch:tinykeys@npm%3A2.1.0#~/.yarn/patches/tinykeys-npm-2.1.0-819feeaed0.patch"
     tree-kill: "npm:^1.2.2"
     ts-node: "npm:^10.9.2"
-    undici: "npm:^6.6.2"
+    undici: "npm:^6.11.1"
     uuid: "npm:^9.0.1"
     vitest: "npm:1.4.0"
     which: "npm:^4.0.0"
@@ -550,7 +550,7 @@ __metadata:
     react-i18next: "npm:^14.0.5"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.3.3"
-    undici: "npm:^6.6.2"
+    undici: "npm:^6.11.1"
   languageName: unknown
   linkType: soft
 
@@ -34387,12 +34387,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:^6.6.2":
-  version: 6.6.2
-  resolution: "undici@npm:6.6.2"
-  dependencies:
-    "@fastify/busboy": "npm:^2.0.0"
-  checksum: 10/e08ac9c279d4e4ee1249d30e6e0671f008e156d8ef224bbe3329ef5c5e10197a9e9dbf87c14e44deaffe2802c10bee66c8687d60ff07179b2e18cd5ef454b5c6
+"undici@npm:^6.11.1":
+  version: 6.16.0
+  resolution: "undici@npm:6.16.0"
+  checksum: 10/c9a794e83c9f49d510601389bdc1cdbd6448896de8b402562c99924d5bc0c0688dda5168e2a0c9df5b2ffe683a5af3906bd61524f230231500b42443ba82bf94
   languageName: node
   linkType: hard
 
