@@ -29,7 +29,7 @@
   "dependencies": {
     "i18next": "^23.10.0",
     "react-i18next": "^14.0.5",
-    "undici": "^6.6.2"
+    "undici": "^6.11.1"
   },
   "devDependencies": {
     "@types/prettier": "^3.0.0",
