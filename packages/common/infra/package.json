@@ -34,7 +34,7 @@
     "async-call-rpc": "^6.4.0",
     "react": "^18.2.0",
     "rxjs": "^7.8.1",
-    "vite": "^5.1.4",
+    "vite": "^5.0.13",
     "vite-plugin-dts": "3.7.3",
     "vitest": "1.4.0"
   },
